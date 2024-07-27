@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import asyncHandler from 'express-async-handler';
-import User from '../models/User';
+import User, { IUserDocument } from '../models/User';
 import generateToken from '../utils/generateToken';
 
 export const registerUser = asyncHandler(async (req: Request, res: Response) => {
@@ -26,7 +26,7 @@ export const registerUser = asyncHandler(async (req: Request, res: Response) => 
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email,
-        token: generateToken(user._id.toString())  // Convert ObjectId to string
+        token: generateToken(user._id.toString())
       });
     } else {
       res.status(400);
@@ -37,7 +37,7 @@ export const registerUser = asyncHandler(async (req: Request, res: Response) => 
   export const loginUser = asyncHandler(async (req: Request, res: Response) => {
     const { email, password } = req.body;
   
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email }) as IUserDocument | null;
   
     if (user && (await user.matchPassword(password))) {
       res.json({
@@ -50,6 +50,23 @@ export const registerUser = asyncHandler(async (req: Request, res: Response) => 
     } else {
       res.status(401);
       throw new Error('Invalid email or password');
+    }
+  });
+
+  export const getUserProfile = asyncHandler(async (req: Request, res: Response) => {
+    const user = await User.findById(req.user._id);
+  
+    if (user) {
+      res.json({
+        _id: user._id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        profileImage: user.profileImage
+      });
+    } else {
+      res.status(404);
+      throw new Error('User not found');
     }
   });
   
