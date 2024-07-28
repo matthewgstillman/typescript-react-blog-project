@@ -1,12 +1,32 @@
 import React from 'react';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import LandingPage from './Components/LandingPage';
 
-const App = () => {
+function App() {
   return (
-    <div className="App">
-      <h1>Blog</h1>
-    </div>
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/landing">Landing Page</Link>
+            </li>
+          </ul>
+        </nav>
+        <Routes>
+          <Route path="/landing" element={<LandingPage />} />
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </div>
+    </Router>
   );
+}
+
+function Home() {
+  return <h2>Home Page</h2>;
 }
 
 export default App;

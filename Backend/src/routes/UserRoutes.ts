@@ -4,8 +4,23 @@ import { registerUser, loginUser, getUserProfile, updateUserProfile } from '../c
 import { protect } from '../middleware/authMiddleware';
 import rateLimit from 'express-rate-limit';
 
-const router = Router();
+const express = require('express');
+const router = express.Router();
+const User = require('../models/User');
 
+router.get('/users', async (req: any, res: { json: (arg0: any) => void; status: (arg0: number) => { (): any; new(): any; json: { (arg0: { message: string; }): void; new(): any; }; }; }) => {
+    try {
+        const users = await User.find();
+        res.json(users);
+    } catch (error: unknown) {
+        if (typeof error === "object" && error !== null && "message" in error) {
+            res.status(500).json({ message: (error as { message: string }).message });
+        } else {
+            res.status(500).json({ message: 'An unknown error occurred' });
+        }
+    }
+});
+ 
 const apiLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, 
   max: 100,
