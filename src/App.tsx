@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import LandingPage from './Components/LandingPage';
 
-function App() {
+const App = () => {
   return (
     <Router>
       <div>
