@@ -7,34 +7,83 @@
     padding: 25px;
 
     .mainHeader {
+        color: #F9A01B;
+        font-size: 52px;
         text-align: left;
+        margin-bottom: 20px;
+
+        @media (max-width: 678px) {
+            font-size: 42px;
+        }
+
+        @media (max-width: 480px) {
+            font-size: 31px;
+        }
     }
 
     .registrationHeader {
-        margin-bottom: 20px;
+        color: #F9A01B;
+        margin-bottom: 40px;
     }
 
     .formRegistration {
-        margin-bottom: 20px;
+        margin-bottom: 50px;
 
         .formFirstName {
             margin-bottom: 10px;
+            max-width: 40%;
+
+            @media (max-width: 1200px) {
+                max-width: 50%;
+            }
+
+            @media (max-width: 678px) {
+                max-width: 100%;
+            }
         }
 
         .formLastName {
             margin-bottom: 10px;
+            max-width: 40%;
+
+            @media (max-width: 1200px) {
+                max-width: 50%;
+            }
+
+            @media (max-width: 678px) {
+                max-width: 100%;
+            }
         }
 
         .formEmail {
             margin-bottom: 10px;
+            max-width: 40%;
+
+            @media (max-width: 1200px) {
+                max-width: 50%;
+            }
+
+            @media (max-width: 678px) {
+                max-width: 100%;
+            }
         }
 
         .formPassword {
             margin-bottom: 20px;
+            max-width: 40%;
+
+            @media (max-width: 1200px) {
+                max-width: 50%;
+            }
+
+            @media (max-width: 678px) {
+                max-width: 100%;
+            }
         }
     }
 
     .loginHeader {
+        color: #F9A01B;
         margin-bottom: 20px;
     }
 
@@ -43,10 +92,28 @@
 
         .formLoginEmail {
             margin-bottom: 10px;
+            max-width: 40%;
+
+            @media (max-width: 1200px) {
+                max-width: 50%;
+            }
+
+            @media (max-width: 678px) {
+                max-width: 100%;
+            }
         }
 
         .formLoginPassword {
             margin-bottom: 20px;
+            max-width: 40%;
+
+            @media (max-width: 1200px) {
+                max-width: 50%;
+            }
+
+            @media (max-width: 678px) {
+                max-width: 100%;
+            }
         }
     }
 }

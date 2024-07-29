@@ -7,27 +7,86 @@
   padding: 25px;
 }
 .mainContainer .mainHeader {
+  color: #F9A01B;
+  font-size: 52px;
   text-align: left;
+  margin-bottom: 20px;
+}
+@media (max-width: 678px) {
+  .mainContainer .mainHeader {
+    font-size: 42px;
+  }
+}
+@media (max-width: 480px) {
+  .mainContainer .mainHeader {
+    font-size: 31px;
+  }
 }
 .mainContainer .registrationHeader {
-  margin-bottom: 20px;
+  color: #F9A01B;
+  margin-bottom: 40px;
 }
 .mainContainer .formRegistration {
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 .mainContainer .formRegistration .formFirstName {
   margin-bottom: 10px;
+  max-width: 40%;
+}
+@media (max-width: 1200px) {
+  .mainContainer .formRegistration .formFirstName {
+    max-width: 50%;
+  }
+}
+@media (max-width: 678px) {
+  .mainContainer .formRegistration .formFirstName {
+    max-width: 100%;
+  }
 }
 .mainContainer .formRegistration .formLastName {
   margin-bottom: 10px;
+  max-width: 40%;
+}
+@media (max-width: 1200px) {
+  .mainContainer .formRegistration .formLastName {
+    max-width: 50%;
+  }
+}
+@media (max-width: 678px) {
+  .mainContainer .formRegistration .formLastName {
+    max-width: 100%;
+  }
 }
 .mainContainer .formRegistration .formEmail {
   margin-bottom: 10px;
+  max-width: 40%;
+}
+@media (max-width: 1200px) {
+  .mainContainer .formRegistration .formEmail {
+    max-width: 50%;
+  }
+}
+@media (max-width: 678px) {
+  .mainContainer .formRegistration .formEmail {
+    max-width: 100%;
+  }
 }
 .mainContainer .formRegistration .formPassword {
   margin-bottom: 20px;
+  max-width: 40%;
+}
+@media (max-width: 1200px) {
+  .mainContainer .formRegistration .formPassword {
+    max-width: 50%;
+  }
+}
+@media (max-width: 678px) {
+  .mainContainer .formRegistration .formPassword {
+    max-width: 100%;
+  }
 }
 .mainContainer .loginHeader {
+  color: #F9A01B;
   margin-bottom: 20px;
 }
 .mainContainer .formLogin {
@@ -35,7 +94,29 @@
 }
 .mainContainer .formLogin .formLoginEmail {
   margin-bottom: 10px;
+  max-width: 40%;
+}
+@media (max-width: 1200px) {
+  .mainContainer .formLogin .formLoginEmail {
+    max-width: 50%;
+  }
+}
+@media (max-width: 678px) {
+  .mainContainer .formLogin .formLoginEmail {
+    max-width: 100%;
+  }
 }
 .mainContainer .formLogin .formLoginPassword {
   margin-bottom: 20px;
+  max-width: 40%;
+}
+@media (max-width: 1200px) {
+  .mainContainer .formLogin .formLoginPassword {
+    max-width: 50%;
+  }
+}
+@media (max-width: 678px) {
+  .mainContainer .formLogin .formLoginPassword {
+    max-width: 100%;
+  }
 }/*# sourceMappingURL=App.css.map */
