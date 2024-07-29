@@ -1,4 +1,52 @@
-.usersMainContainer {
+.mainContainer {
+    background-color: #002b5c;
+    color: white;
     display: flex;
-    padding: 15px;
+    flex-direction: column;
+    height: 100vh;
+    padding: 25px;
+
+    .mainHeader {
+        text-align: left;
+    }
+
+    .registrationHeader {
+        margin-bottom: 20px;
+    }
+
+    .formRegistration {
+        margin-bottom: 20px;
+
+        .formFirstName {
+            margin-bottom: 10px;
+        }
+
+        .formLastName {
+            margin-bottom: 10px;
+        }
+
+        .formEmail {
+            margin-bottom: 10px;
+        }
+
+        .formPassword {
+            margin-bottom: 20px;
+        }
+    }
+
+    .loginHeader {
+        margin-bottom: 20px;
+    }
+
+    .formLogin {
+        margin-bottom: 20px;
+
+        .formLoginEmail {
+            margin-bottom: 10px;
+        }
+
+        .formLoginPassword {
+            margin-bottom: 20px;
+        }
+    }
 }

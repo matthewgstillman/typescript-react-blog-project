@@ -1,12 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import LandingPage from './Components/LandingPage';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
   return (
     <Router>
       <div>
-        <nav>
+        {/* <nav>
           <ul>
             <li>
               <Link to="/">Home</Link>
@@ -15,7 +16,7 @@ const App = () => {
               <Link to="/landing">Landing Page</Link>
             </li>
           </ul>
-        </nav>
+        </nav> */}
         <Routes>
           <Route path="/landing" element={<LandingPage />} />
           <Route path="/" element={<Home />} />

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import '../Styles/App.css';
+import { Form, Button, Container, Row, Col } from 'react-bootstrap';
+import '../Styles/App.scss';
 
 interface User {
     _id: string;
@@ -67,89 +68,81 @@ const LandingPage = () => {
     };
 
     return (
-        <div className="usersMainContainer">
-            <h1>Users</h1>
-            <ul>
-                {users.map(user => (
-                    <li key={user._id}>{user.firstName} {user.lastName}</li>
-                ))}
-            </ul>
-
-            <h2>Register</h2>
-            <form onSubmit={handleRegisterSubmit}>
-                <div>
-                    <label htmlFor="firstName">First Name:</label>
-                    <input
+        <div className="mainContainer">
+            <h1 className='mainHeader'>TypeScript Blog Project</h1>
+            <h2 className="registrationHeader">Register</h2>
+            <Form className="formRegistration" onSubmit={handleRegisterSubmit}>
+                <Form.Group className="formFirstName" controlId="formFirstName">
+                    <Form.Label>First Name</Form.Label>
+                    <Form.Control
                         type="text"
-                        id="firstName"
                         name="firstName"
                         value={registerData.firstName}
                         onChange={handleRegisterChange}
                         required
                     />
-                </div>
-                <div>
-                    <label htmlFor="lastName">Last Name:</label>
-                    <input
+                </Form.Group>
+                <Form.Group className="formLastName"  controlId="formLastName">
+                    <Form.Label>Last Name</Form.Label>
+                    <Form.Control
                         type="text"
-                        id="lastName"
                         name="lastName"
                         value={registerData.lastName}
                         onChange={handleRegisterChange}
                         required
                     />
-                </div>
-                <div>
-                    <label htmlFor="email">Email:</label>
-                    <input
+                </Form.Group>
+                <Form.Group className="formEmail" controlId="formEmail">
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control
                         type="email"
-                        id="email"
                         name="email"
                         value={registerData.email}
                         onChange={handleRegisterChange}
                         required
                     />
-                </div>
-                <div>
-                    <label htmlFor="password">Password:</label>
-                    <input
+                </Form.Group>
+                <Form.Group className="formPassword" controlId="formPassword">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control
                         type="password"
-                        id="password"
                         name="password"
                         value={registerData.password}
                         onChange={handleRegisterChange}
                         required
                     />
-                </div>
-                <button type="submit">Register</button>
-            </form>
+                </Form.Group>
+                <Button variant="primary" type="submit">
+                    Register
+                </Button>
+            </Form>
 
-            <h2>Login</h2>
-            <form onSubmit={handleLoginSubmit}>
-                <div>
-                    <label htmlFor="loginEmail">Email:</label>
-                    <input
+            <h2 className="loginHeader">Login</h2>
+            <Form className="formLogin" onSubmit={handleLoginSubmit}>
+                <Form.Group className="formLoginEmail" controlId="formLoginEmail">
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control
                         type="email"
-                        id="loginEmail"
                         name="email"
                         value={loginData.email}
                         onChange={handleLoginChange}
                         required
                     />
-                </div>
-                <div>
-                    <label htmlFor="loginPassword">Password:</label>
-                    <input
+                </Form.Group>
+                <Form.Group className="formLoginPassword" controlId="formLoginPassword">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control
                         type="password"
-                        id="loginPassword"
                         name="password"
                         value={loginData.password}
                         onChange={handleLoginChange}
                         required
                     />
-                </div>
-                <button type="submit">Login</button>
-            </form>
+                </Form.Group>
+                <Button variant="primary" type="submit">
+                    Login
+                </Button>
+            </Form>
         </div>
     );
 }

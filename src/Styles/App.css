@@ -1,5 +1,41 @@
-.usersMainContainer {
+.mainContainer {
+  background-color: #002b5c;
+  color: white;
   display: flex;
   flex-direction: column;
-  padding: 15px;
+  height: 100vh;
+  padding: 25px;
+}
+.mainContainer .mainHeader {
+  text-align: left;
+}
+.mainContainer .registrationHeader {
+  margin-bottom: 20px;
+}
+.mainContainer .formRegistration {
+  margin-bottom: 20px;
+}
+.mainContainer .formRegistration .formFirstName {
+  margin-bottom: 10px;
+}
+.mainContainer .formRegistration .formLastName {
+  margin-bottom: 10px;
+}
+.mainContainer .formRegistration .formEmail {
+  margin-bottom: 10px;
+}
+.mainContainer .formRegistration .formPassword {
+  margin-bottom: 20px;
+}
+.mainContainer .loginHeader {
+  margin-bottom: 20px;
+}
+.mainContainer .formLogin {
+  margin-bottom: 20px;
+}
+.mainContainer .formLogin .formLoginEmail {
+  margin-bottom: 10px;
+}
+.mainContainer .formLogin .formLoginPassword {
+  margin-bottom: 20px;
 }/*# sourceMappingURL=App.css.map */
