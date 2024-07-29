@@ -9,7 +9,7 @@ interface User {
     lastName: string;
 }
 
-const LandingPage = () => {
+const LandingPage: React.FC = () => {
     const [users, setUsers] = useState<User[]>([]);
     const [registerData, setRegisterData] = useState({
         firstName: '',

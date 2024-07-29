@@ -1,3 +1,4 @@
+//Landing Page Styles
 .mainContainer {
     background-color: #002b5c;
     color: white;
@@ -84,7 +85,7 @@
 
     .loginHeader {
         color: #F9A01B;
-        margin-bottom: 20px;
+        margin-bottom: 50px;
     }
 
     .formLogin {
@@ -115,5 +116,39 @@
                 max-width: 100%;
             }
         }
+    }
+}
+
+//Blogs Style
+.blogsMainContainer {
+    background-color: #002b5c;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 25px;
+
+    .blogsMainHeader {
+        color: #F9A01B;
+        font-size: 52px;
+        text-align: left;
+        margin-bottom: 20px;
+
+        @media (max-width: 678px) {
+            font-size: 42px;
+        }
+
+        @media (max-width: 480px) {
+            font-size: 31px;
+        }
+    }
+
+    .row {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .blogCommentBox {
+        margin-top: 30px;
     }
 }

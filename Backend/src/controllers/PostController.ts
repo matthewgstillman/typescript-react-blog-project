@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import asyncHandler from 'express-async-handler';
 import Post from '../models/Post';
-import User from '../models/User';
 
 export const createPost = asyncHandler(async (req: Request, res: Response) => {
     const { title, content } = req.body;

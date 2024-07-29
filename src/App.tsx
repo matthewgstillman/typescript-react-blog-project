@@ -2,8 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import LandingPage from './Components/LandingPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Blogs from './Components/Blogs';
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <Router>
       <div>
@@ -19,6 +20,7 @@ const App = () => {
         </nav> */}
         <Routes>
           <Route path="/landing" element={<LandingPage />} />
+          <Route path="/blogs" element={<Blogs />}/>
           <Route path="/" element={<Home />} />
         </Routes>
       </div>

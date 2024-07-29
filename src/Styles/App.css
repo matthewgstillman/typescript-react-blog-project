@@ -87,7 +87,7 @@
 }
 .mainContainer .loginHeader {
   color: #F9A01B;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 .mainContainer .formLogin {
   margin-bottom: 20px;
@@ -119,4 +119,36 @@
   .mainContainer .formLogin .formLoginPassword {
     max-width: 100%;
   }
+}
+
+.blogsMainContainer {
+  background-color: #002b5c;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 25px;
+}
+.blogsMainContainer .blogsMainHeader {
+  color: #F9A01B;
+  font-size: 52px;
+  text-align: left;
+  margin-bottom: 20px;
+}
+@media (max-width: 678px) {
+  .blogsMainContainer .blogsMainHeader {
+    font-size: 42px;
+  }
+}
+@media (max-width: 480px) {
+  .blogsMainContainer .blogsMainHeader {
+    font-size: 31px;
+  }
+}
+.blogsMainContainer .row {
+  display: flex;
+  flex-direction: column;
+}
+.blogsMainContainer .blogCommentBox {
+  margin-top: 30px;
 }/*# sourceMappingURL=App.css.map */
