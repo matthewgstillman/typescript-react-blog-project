@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import '../Styles/App.css';
 
 interface User {
     _id: string;
