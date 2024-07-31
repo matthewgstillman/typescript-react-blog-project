@@ -10,8 +10,8 @@ const CreateBlogPost: React.FC<CreateBlogPostProps> = ({ userId }) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
 
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
     const postData = {
       title,
       content,
