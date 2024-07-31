@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import LandingPage from './Components/LandingPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Blogs from './Components/Blogs';
+import CreateABlog from './Components/CreateABlog';
 
 const App: React.FC = () => {
   return (
@@ -21,6 +22,7 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/landing" element={<LandingPage />} />
           <Route path="/blogs" element={<Blogs />}/>
+          <Route path="/createablog" element={<CreateABlog />}/>
           <Route path="/" element={<Home />} />
         </Routes>
       </div>
