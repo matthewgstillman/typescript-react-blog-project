@@ -47,14 +47,21 @@ const LandingPage: React.FC = () => {
 
     const handleRegisterSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        alert("In the register submit mode");
         try {
+            alert("Looking good so far");
             const response = await axios.post('http://localhost:3001/register', registerData);
             setUsers([...users, response.data]);
             setRegisterData({ firstName: '', lastName: '', email: '', password: '' });
         } catch (error) {
-            console.error('Error registering user: ', error);
+            alert("Error registering user");
+            if (axios.isAxiosError(error)) {
+                console.error('Axios error:', error.response?.data);
+            } else {
+                console.error('Error registering user: ', error);
+            }
         }
-    };
+    };    
 
     const handleLoginSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
