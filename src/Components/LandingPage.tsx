@@ -117,7 +117,7 @@ const LandingPage: React.FC = () => {
   const handleRegisterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateRegister()) return;
-    
+
     try {
       const response = await axios.post('http://localhost:3001/register', registerData);
       setUsers([...users, response.data]);
