@@ -57,6 +57,7 @@ export const loginUser = asyncHandler(async (req: Request, res: Response) => {
   }
 });
 
+
 export const getUserProfile = asyncHandler(async (req: AuthenticatedRequest, res: Response) => {
   const user = await User.findById(req.user?._id) as IUserDocument | null;
 
@@ -69,8 +70,7 @@ export const getUserProfile = asyncHandler(async (req: AuthenticatedRequest, res
       profileImage: user.profileImage
     });
   } else {
-    res.status(404);
-    throw new Error('User not found');
+    res.status(404).json({ message: 'User not found' });
   }
 });
 
@@ -97,7 +97,6 @@ export const updateUserProfile = asyncHandler(async (req: AuthenticatedRequest, 
       token: generateToken(updatedUser._id.toString())
     });
   } else {
-    res.status(404);
-    throw new Error('User not found');
+    res.status(404).json({ message: 'User not found' });
   }
 });

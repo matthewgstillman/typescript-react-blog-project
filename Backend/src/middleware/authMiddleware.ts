@@ -1,36 +1,34 @@
-import jwt from 'jsonwebtoken';
 import { Request, Response, NextFunction } from 'express';
-import asyncHandler from 'express-async-handler';
-import User from '../models/User';
+import jwt from 'jsonwebtoken';
+import User, { IUserDocument } from '../models/User';
 
-interface JwtPayload {
-  id: string;
+interface AuthenticatedRequest extends Request {
+  user?: IUserDocument;
 }
 
-export const protect = asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
-  let token;
+const protect = async (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
+  let token: string | undefined;
 
-  if (
-    req.headers.authorization &&
-    req.headers.authorization.startsWith('Bearer')
-  ) {
+  if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
     try {
       token = req.headers.authorization.split(' ')[1];
+      const decoded: any = jwt.verify(token, process.env.JWT_SECRET!);
 
-      const decoded = jwt.verify(token, process.env.JWT_SECRET!) as JwtPayload;
+      const user = await User.findById(decoded.id).select('-password') as IUserDocument | null;
+      if (!user) {
+        res.status(401).json({ message: 'Not authorized, user not found' });
+        return;
+      }
 
-      req.user = await User.findById(decoded.id).select('-password');
-
+      req.user = user;
       next();
     } catch (error) {
       console.error(error);
-      res.status(401);
-      throw new Error('Not authorized, token failed');
+      res.status(401).json({ message: 'Not authorized, token failed' });
     }
+  } else {
+    res.status(401).json({ message: 'Not authorized, no token' });
   }
+};
 
-  if (!token) {
-    res.status(401);
-    throw new Error('Not authorized, no token');
-  }
-});
+export { protect };
