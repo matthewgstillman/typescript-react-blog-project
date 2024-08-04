@@ -3,6 +3,10 @@ import asyncHandler from 'express-async-handler';
 import User, { IUserDocument } from '../models/User';
 import generateToken from '../utils/generateToken';
 
+interface AuthenticatedRequest extends Request {
+  user?: IUserDocument;
+}
+
 export const registerUser = asyncHandler(async (req: Request, res: Response) => {
   const { firstName, lastName, email, password } = req.body;
 
@@ -53,8 +57,8 @@ export const loginUser = asyncHandler(async (req: Request, res: Response) => {
   }
 });
 
-export const getUserProfile = asyncHandler(async (req: Request, res: Response) => {
-  const user = await User.findById(req.user._id) as IUserDocument | null;
+export const getUserProfile = asyncHandler(async (req: AuthenticatedRequest, res: Response) => {
+  const user = await User.findById(req.user?._id) as IUserDocument | null;
 
   if (user) {
     res.json({
@@ -70,8 +74,8 @@ export const getUserProfile = asyncHandler(async (req: Request, res: Response) =
   }
 });
 
-export const updateUserProfile = asyncHandler(async (req: Request, res: Response) => {
-  const user = await User.findById(req.user._id) as IUserDocument | null;
+export const updateUserProfile = asyncHandler(async (req: AuthenticatedRequest, res: Response) => {
+  const user = await User.findById(req.user?._id) as IUserDocument | null;
 
   if (user) {
     user.firstName = req.body.firstName || user.firstName;

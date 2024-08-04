@@ -37,7 +37,7 @@ const LandingPage: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/users');
+        const response = await axios.get('http://localhost:3001/api/users');
         setUsers(response.data);
       } catch (error) {
         console.error('Error fetching data: ', error);
@@ -117,7 +117,7 @@ const LandingPage: React.FC = () => {
   const handleRegisterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateRegister()) return;
-
+    
     try {
       const response = await axios.post('http://localhost:3001/register', registerData);
       setUsers([...users, response.data]);

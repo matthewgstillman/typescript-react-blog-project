@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { Router, Request, Response } from 'express';
 import { body } from 'express-validator';
 import { registerUser, loginUser, getUserProfile, updateUserProfile } from '../controllers/UserController';
 import { protect } from '../middleware/authMiddleware';
@@ -8,11 +8,11 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
 
-router.get('/users', async (req: any, res: { json: (arg0: any) => void; status: (arg0: number) => { (): any; new(): any; json: { (arg0: { message: string; }): void; new(): any; }; }; }) => {
+router.get('/', async (req: Request, res: Response) => {
     try {
         const users = await User.find();
         res.json(users);
-    } catch (error: unknown) {
+    } catch (error) {
         if (typeof error === "object" && error !== null && "message" in error) {
             res.status(500).json({ message: (error as { message: string }).message });
         } else {
