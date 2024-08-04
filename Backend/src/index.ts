@@ -1,8 +1,12 @@
-require('dotenv').config();
+import dotenv from 'dotenv';
+import express from 'express';
+import mongoose from 'mongoose';
+import cors from 'cors';
 
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
+import userRoutes from './routes/UserRoutes';
+import postRoutes from './routes/PostRoutes';
+
+dotenv.config();
 
 const app = express();
 
@@ -14,22 +18,15 @@ const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/myDatabase
 console.log(MONGO_URI);
 
 mongoose.connect(MONGO_URI, {
-  useNewUrlParser: true,
   useUnifiedTopology: true
-})
+} as mongoose.ConnectOptions)
 .then(() => console.log("MongoDB connected successfully"))
-.catch((err: any) => console.log("MongoDB connection error:", err));
-
-const userRoutes = require('./routes/userRoutes');
-const postRoutes = require('./routes/postRoutes');
+.catch((err) => console.log("MongoDB connection error:", err));
 
 app.use('/api/users', userRoutes);
 app.use('/api/posts', postRoutes);
 
-app.listen(PORT, (err: any) => {
-  if (err) {
-    console.error('Failed to start server:', err);
-  } else {
-    console.log(`Server is running on port ${PORT}`);
-  }
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
+
