@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -23,7 +25,7 @@ const postRoutes = require('./routes/postRoutes');
 app.use('/api/users', userRoutes);
 app.use('/api/posts', postRoutes);
 
-app.listen(PORT, (err: Error) => {
+app.listen(PORT, (err: any) => {
   if (err) {
     console.error('Failed to start server:', err);
   } else {
