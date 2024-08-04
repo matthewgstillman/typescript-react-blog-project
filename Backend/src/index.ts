@@ -23,6 +23,10 @@ const postRoutes = require('./routes/postRoutes');
 app.use('/api/users', userRoutes);
 app.use('/api/posts', postRoutes);
 
-app.listen(PORT, () => {
+app.listen(PORT, (err: Error) => {
+  if (err) {
+    console.error('Failed to start server:', err);
+  } else {
     console.log(`Server is running on port ${PORT}`);
+  }
 });
