@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { registerUser, loginUser, getUserProfile, updateUserProfile } from '../controllers/UserController';
+import { registerUser, loginUser, getUserProfile, updateUserProfile, getAllUsers } from '../controllers/UserController';
 import { protect } from '../middleware/authMiddleware';
 import rateLimit from 'express-rate-limit';
 import { body } from 'express-validator';
@@ -16,9 +16,12 @@ router.use('/login', apiLimiter);
 router.use('/register', apiLimiter);
 
 const registrationValidation = [
-  body('email', 'Invalid email').isEmail(),
-  body('password', 'Password must be at least 6 characters long').isLength({ min: 6 })
-];
+    body('email', 'Invalid email').isEmail(),
+    body('password', 'Password must be at least 8 characters long and contain at least one uppercase letter and one punctuation character')
+      .isLength({ min: 8 })
+      .matches(/.*[A-Z].*/)
+      .matches(/.*[!@#$%^&*(),.?":{}|<>].*/)
+  ];
 
 const loginValidation = [
   body('email', 'Invalid email').isEmail(),
@@ -31,5 +34,7 @@ router.post('/login', loginValidation, loginUser);
 router.route('/profile')
   .get(protect, getUserProfile)
   .put(protect, updateUserProfile);
+
+router.get('/', getAllUsers);
 
 export default router;

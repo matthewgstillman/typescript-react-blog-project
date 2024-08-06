@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 3001;
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/myDatabase';
 console.log(MONGO_URI);
 mongoose_1.default.connect(MONGO_URI, {
-    useUnifiedTopology: true
+    useNewUrlParser: true
 })
     .then(() => console.log("MongoDB connected successfully"))
     .catch((err) => console.log("MongoDB connection error:", err));

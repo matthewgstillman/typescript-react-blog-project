@@ -29,4 +29,5 @@ router.post('/login', loginValidation, UserController_1.loginUser);
 router.route('/profile')
     .get(authMiddleware_1.protect, UserController_1.getUserProfile)
     .put(authMiddleware_1.protect, UserController_1.updateUserProfile);
+router.get('/', UserController_1.getAllUsers);
 exports.default = router;

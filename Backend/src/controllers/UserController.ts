@@ -7,6 +7,11 @@ interface AuthenticatedRequest extends Request {
   user?: IUserDocument;
 }
 
+export const getAllUsers = asyncHandler(async (req: Request, res: Response) => {
+  const users = await User.find();
+  res.json(users);
+});
+
 export const registerUser = asyncHandler(async (req: Request, res: Response) => {
   const { firstName, lastName, email, password } = req.body;
 

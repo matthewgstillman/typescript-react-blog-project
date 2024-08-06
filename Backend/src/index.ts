@@ -18,7 +18,7 @@ const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/myDatabase
 console.log(MONGO_URI);
 
 mongoose.connect(MONGO_URI, {
-  useUnifiedTopology: true
+  useNewUrlParser: true
 } as mongoose.ConnectOptions)
 .then(() => console.log("MongoDB connected successfully"))
 .catch((err) => console.log("MongoDB connection error:", err));
@@ -29,4 +29,3 @@ app.use('/api/posts', postRoutes);
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-

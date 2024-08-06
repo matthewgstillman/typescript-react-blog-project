@@ -117,9 +117,9 @@ const LandingPage: React.FC = () => {
   const handleRegisterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateRegister()) return;
-    
+
     try {
-      const response = await axios.post('http://localhost:3001/register', registerData);
+      const response = await axios.post('http://localhost:3001/api/register', registerData);
       setUsers([...users, response.data]);
       setRegisterData({ firstName: '', lastName: '', email: '', password: '', confirmPassword: '' });
     } catch (error) {
@@ -132,7 +132,7 @@ const LandingPage: React.FC = () => {
     if (!validateLogin()) return;
 
     try {
-      const response = await axios.post('http://localhost:3001/login', loginData);
+      const response = await axios.post('http://localhost:3001/api/login', loginData);
       console.log('Login successful:', response.data);
       setLoginData({ email: '', password: '' });
     } catch (error) {

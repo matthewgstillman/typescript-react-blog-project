@@ -3,7 +3,6 @@
   color: white;
   display: flex;
   flex-direction: column;
-  height: 100vh;
   padding: 25px;
 }
 .mainContainer .mainHeader {
@@ -12,7 +11,7 @@
   text-align: left;
   margin-bottom: 20px;
 }
-@media (max-width: 678px) {
+@media (max-width: 768px) {
   .mainContainer .mainHeader {
     font-size: 42px;
   }
@@ -29,6 +28,10 @@
 .mainContainer .formRegistration {
   margin-bottom: 50px;
 }
+.mainContainer .formRegistration .errorMessage {
+  color: #F9A01B;
+  font-weight: 900;
+}
 .mainContainer .formRegistration .formFirstName {
   margin-bottom: 10px;
   max-width: 40%;
@@ -38,7 +41,7 @@
     max-width: 50%;
   }
 }
-@media (max-width: 678px) {
+@media (max-width: 768px) {
   .mainContainer .formRegistration .formFirstName {
     max-width: 100%;
   }
@@ -52,7 +55,7 @@
     max-width: 50%;
   }
 }
-@media (max-width: 678px) {
+@media (max-width: 768px) {
   .mainContainer .formRegistration .formLastName {
     max-width: 100%;
   }
@@ -66,13 +69,13 @@
     max-width: 50%;
   }
 }
-@media (max-width: 678px) {
+@media (max-width: 768px) {
   .mainContainer .formRegistration .formEmail {
     max-width: 100%;
   }
 }
 .mainContainer .formRegistration .formPassword {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   max-width: 40%;
 }
 @media (max-width: 1200px) {
@@ -80,8 +83,22 @@
     max-width: 50%;
   }
 }
-@media (max-width: 678px) {
+@media (max-width: 768px) {
   .mainContainer .formRegistration .formPassword {
+    max-width: 100%;
+  }
+}
+.mainContainer .formRegistration .formConfirmPassword {
+  margin-bottom: 20px;
+  max-width: 40%;
+}
+@media (max-width: 1200px) {
+  .mainContainer .formRegistration .formConfirmPassword {
+    max-width: 50%;
+  }
+}
+@media (max-width: 768px) {
+  .mainContainer .formRegistration .formConfirmPassword {
     max-width: 100%;
   }
 }
@@ -101,7 +118,7 @@
     max-width: 50%;
   }
 }
-@media (max-width: 678px) {
+@media (max-width: 768px) {
   .mainContainer .formLogin .formLoginEmail {
     max-width: 100%;
   }
@@ -115,7 +132,7 @@
     max-width: 50%;
   }
 }
-@media (max-width: 678px) {
+@media (max-width: 768px) {
   .mainContainer .formLogin .formLoginPassword {
     max-width: 100%;
   }
@@ -135,7 +152,7 @@
   text-align: left;
   margin-bottom: 20px;
 }
-@media (max-width: 678px) {
+@media (max-width: 768px) {
   .blogsMainContainer .blogsMainHeader {
     font-size: 42px;
   }
