@@ -15,31 +15,37 @@ export const getAllUsers = asyncHandler(async (req: Request, res: Response) => {
 export const registerUser = asyncHandler(async (req: Request, res: Response) => {
   const { firstName, lastName, email, password } = req.body;
 
-  const userExists = await User.findOne({ email });
+  try {
+    const userExists = await User.findOne({ email });
 
-  if (userExists) {
-    res.status(400);
-    throw new Error('User already exists');
-  }
+    if (userExists) {
+      res.status(400);
+      throw new Error('User already exists');
+    }
 
-  const user = await User.create({
-    firstName,
-    lastName,
-    email,
-    password
-  }) as IUserDocument;
+    const user = await User.create({
+      firstName,
+      lastName,
+      email,
+      password
+    }) as IUserDocument;
 
-  if (user) {
-    res.status(201).json({
-      _id: user._id,
-      firstName: user.firstName,
-      lastName: user.lastName,
-      email: user.email,
-      token: generateToken(user._id.toString())
-    });
-  } else {
-    res.status(400);
-    throw new Error('Invalid user data');
+    if (user) {
+      res.status(201).json({
+        _id: user._id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        token: generateToken(user._id.toString())
+      });
+    } else {
+      res.status(400);
+      throw new Error('Invalid user data');
+    }
+  } catch (error) {
+    const err = error as Error;
+    console.error('Error during user registration:', err);
+    res.status(500).json({ message: 'Server error', error: err.message });
   }
 });
 

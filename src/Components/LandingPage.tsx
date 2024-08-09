@@ -184,9 +184,10 @@ const LandingPage: React.FC = () => {
           <Form.Control
             type="password"
             name="password"
-            value={registerData.password}
-            onChange={handleRegisterChange}
+            value={loginData.password}
+            onChange={handleLoginChange}
             required
+            autoComplete="current-password"
           />
           {registerErrors.password && <div className="errorMessage">{registerErrors.password}</div>}
         </Form.Group>
