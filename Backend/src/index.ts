@@ -10,8 +10,6 @@ import postRoutes from './routes/PostRoutes';
 dotenv.config();
 
 const app = express();
-
-// Security middleware
 app.use(helmet());
 app.use(cors());
 app.use(express.json());

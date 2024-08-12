@@ -105,6 +105,7 @@ const LandingPage: React.FC = () => {
       errors.email = 'Invalid email address';
       isValid = false;
     }
+
     if (loginData.password.length < 6) {
       errors.password = 'Password must be at least 6 characters';
       isValid = false;
@@ -184,8 +185,8 @@ const LandingPage: React.FC = () => {
           <Form.Control
             type="password"
             name="password"
-            value={loginData.password}
-            onChange={handleLoginChange}
+            value={registerData.password}
+            onChange={handleRegisterChange}
             required
             autoComplete="current-password"
           />
