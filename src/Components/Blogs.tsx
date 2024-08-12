@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Card, ListGroup, Form, FormControl, Button, Row, Col } from 'react-bootstrap';
+import { Card, ListGroup, Form, FormControl, Button, Row, Col, Navbar, Nav } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import '../Styles/App.scss';
 
 interface Post {
@@ -10,8 +11,22 @@ interface Post {
   comments?: { author: string; text: string }[];
 }
 
+interface User {
+  firstName: string;
+}
+
 const Blogs: React.FC = () => {
   const [posts, setPosts] = useState<Post[] | null>(null);
+  const [user, setUser] = useState<User | null>(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem('user') || 'null');
+    console.log('Stored User:', storedUser);
+    setUser(storedUser);
+  
+    fetchPosts();
+  }, []);
 
   const fetchPosts = async () => {
     try {
@@ -22,12 +37,24 @@ const Blogs: React.FC = () => {
     }
   };
 
-  useEffect(() => {
-    fetchPosts();
-  }, []);
+  const handleLogout = () => {
+    localStorage.removeItem('user');
+    navigate('/');
+  };
 
   return (
     <div className="blogsMainContainer">
+      <Navbar expand="lg">
+        <Navbar.Brand>My Blog</Navbar.Brand>
+        <Nav className="ml-auto">
+          {user && (
+            <Nav.Link onClick={handleLogout}>
+              Logout {user.firstName}?
+            </Nav.Link>
+          )}
+        </Nav>
+      </Navbar>
+
       <h1 className="blogsMainHeader">Blogs</h1>
       <Row>
         {posts && posts.length > 0 ? (
@@ -56,8 +83,8 @@ const Blogs: React.FC = () => {
         ) : (
           <Col md={8}>
             <div className="noPostsAvailable">
-                <div>No posts available</div>
-                <a href="#">Create your first blog post</a>
+              <div>No posts available</div>
+              <a href="#">Create your first blog post</a>
             </div>
           </Col>
         )}

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Form, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import '../Styles/App.scss';
 
 interface User {
@@ -33,6 +34,8 @@ const LandingPage: React.FC = () => {
     email: '',
     password: ''
   });
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -118,24 +121,28 @@ const LandingPage: React.FC = () => {
   const handleRegisterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateRegister()) return;
-
+  
     try {
       const response = await axios.post('http://localhost:3001/api/users/register', registerData);
-      setUsers([...users, response.data]);
+      console.log('Registration successful:', response.data);
+      localStorage.setItem('user', JSON.stringify(response.data.user));
       setRegisterData({ firstName: '', lastName: '', email: '', password: '', confirmPassword: '' });
+      navigate('/blogs');
     } catch (error) {
       console.error('Error registering user: ', error);
     }
-};
+  };
 
   const handleLoginSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateLogin()) return;
-
+  
     try {
       const response = await axios.post('http://localhost:3001/api/users/login', loginData);
       console.log('Login successful:', response.data);
+      localStorage.setItem('user', JSON.stringify(response.data.user));
       setLoginData({ email: '', password: '' });
+      navigate('/blogs');
     } catch (error) {
       console.error('Error logging in: ', error);
     }
