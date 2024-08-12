@@ -7,7 +7,10 @@ import helmet from 'helmet';
 import userRoutes from './routes/UserRoutes';
 import postRoutes from './routes/PostRoutes';
 
-dotenv.config();
+import path from 'path';
+
+console.log('Current working directory:', path.resolve(__dirname));
+dotenv.config({ path: path.resolve(__dirname, '../../.env') });
 
 const app = express();
 app.use(helmet());
@@ -22,6 +25,7 @@ if (!MONGO_URI) {
 }
 
 console.log(`Connecting to MongoDB at ${MONGO_URI}`);
+console.log('JWT_SECRET:', process.env.JWT_SECRET);
 
 mongoose.connect(MONGO_URI, {
   useNewUrlParser: true,
@@ -45,3 +49,4 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
