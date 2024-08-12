@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Card, ListGroup, Form, FormControl, Button, Container, Row, Col } from 'react-bootstrap';
+import { Card, ListGroup, Form, FormControl, Button, Row, Col } from 'react-bootstrap';
 import '../Styles/App.scss';
 
 interface Post {

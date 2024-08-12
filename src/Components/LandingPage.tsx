@@ -133,7 +133,7 @@ const LandingPage: React.FC = () => {
     if (!validateLogin()) return;
 
     try {
-      const response = await axios.post('http://localhost:3001/api/login', loginData);
+      const response = await axios.post('http://localhost:3001/api/users/login', loginData);
       console.log('Login successful:', response.data);
       setLoginData({ email: '', password: '' });
     } catch (error) {
