@@ -21,10 +21,20 @@ const Blogs: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem('user') || 'null');
-    console.log('Stored User:', storedUser);
-    setUser(storedUser);
-  
+    const storedUserString = localStorage.getItem('user');
+    
+    if (storedUserString) {
+      try {
+        const storedUser = JSON.parse(storedUserString);
+        console.log('Stored User:', storedUser);
+        setUser(storedUser);
+      } catch (error) {
+        console.error('Error parsing stored user:', error);
+      }
+    } else {
+      console.warn('No user found in localStorage');
+    }
+    
     fetchPosts();
   }, []);
 
