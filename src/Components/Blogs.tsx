@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Card, ListGroup, Form, FormControl, Button, Row, Col, Navbar, Nav } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import '../Styles/App.scss';
+import { useUser } from '../Contexts/UserContext';
 
 interface Post {
   _id: string;
@@ -11,30 +12,12 @@ interface Post {
   comments?: { author: string; text: string }[];
 }
 
-interface User {
-  firstName: string;
-}
-
 const Blogs: React.FC = () => {
   const [posts, setPosts] = useState<Post[] | null>(null);
-  const [user, setUser] = useState<User | null>(null);
+  const { user, setUser } = useUser();
   const navigate = useNavigate();
 
   useEffect(() => {
-    const storedUserString = localStorage.getItem('user');
-    
-    if (storedUserString) {
-      try {
-        const storedUser = JSON.parse(storedUserString);
-        console.log('Stored User:', storedUser);
-        setUser(storedUser);
-      } catch (error) {
-        console.error('Error parsing stored user:', error);
-      }
-    } else {
-      console.warn('No user found in localStorage');
-    }
-    
     fetchPosts();
   }, []);
 
@@ -48,7 +31,7 @@ const Blogs: React.FC = () => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('user');
+    setUser(null);
     navigate('/');
   };
 
