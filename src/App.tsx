@@ -1,18 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LandingPage from './Components/LandingPage';
 import Blogs from './Components/Blogs';
-import CreateABlog from './Components/CreateABlog';
+import CreateBlogPost from './Components/CreateABlog';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App: React.FC = () => {
+  const [userId, setUserId] = useState('exampleUserId');
+
   return (
     <Router>
       <div>
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/blogs" element={<Blogs />} />
-          {/* <Route path="/createablog" element={<CreateABlog />} /> */}
+          <Route 
+            path="/createablog" 
+            element={<CreateBlogPost userId={userId} />} 
+          />
         </Routes>
       </div>
     </Router>

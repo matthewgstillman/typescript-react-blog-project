@@ -77,7 +77,7 @@ const Blogs: React.FC = () => {
           <Col md={8}>
             <div className="noPostsAvailable">
               <div>No posts available</div>
-              <a href="#">Create your first blog post</a>
+              <a href="/createablog">Create your first blog post</a>
             </div>
           </Col>
         )}
