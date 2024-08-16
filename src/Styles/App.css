@@ -168,4 +168,74 @@
 }
 .blogsMainContainer .blogCommentBox {
   margin-top: 30px;
+}
+
+.createBlogMainContainer {
+  background-color: #002b5c;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 25px;
+}
+.createBlogMainContainer .createBlogHeader {
+  color: #F9A01B;
+  font-size: 52px;
+  text-align: left;
+  margin-bottom: 20px;
+}
+@media (max-width: 768px) {
+  .createBlogMainContainer .createBlogHeader {
+    font-size: 42px;
+  }
+}
+@media (max-width: 480px) {
+  .createBlogMainContainer .createBlogHeader {
+    font-size: 31px;
+  }
+}
+.createBlogMainContainer .formCreateBlog {
+  margin-bottom: 20px;
+}
+.createBlogMainContainer .formCreateBlog .formTitle {
+  margin-bottom: 10px;
+  max-width: 60%;
+}
+@media (max-width: 1200px) {
+  .createBlogMainContainer .formCreateBlog .formTitle {
+    max-width: 70%;
+  }
+}
+@media (max-width: 768px) {
+  .createBlogMainContainer .formCreateBlog .formTitle {
+    max-width: 100%;
+  }
+}
+.createBlogMainContainer .formCreateBlog .formContent {
+  margin-bottom: 20px;
+  max-width: 100%;
+}
+@media (max-width: 1200px) {
+  .createBlogMainContainer .formCreateBlog .formContent {
+    max-width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  .createBlogMainContainer .formCreateBlog .formContent {
+    max-width: 100%;
+  }
+}
+.createBlogMainContainer .formCreateBlog .submitButton {
+  max-width: 30%;
+  align-self: flex-start;
+}
+@media (max-width: 1200px) {
+  .createBlogMainContainer .formCreateBlog .submitButton {
+    max-width: 40%;
+  }
+}
+@media (max-width: 768px) {
+  .createBlogMainContainer .formCreateBlog .submitButton {
+    max-width: 100%;
+  }
 }/*# sourceMappingURL=App.css.map */

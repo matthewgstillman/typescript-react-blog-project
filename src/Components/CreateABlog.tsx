@@ -21,10 +21,10 @@ const CreateBlogPost: React.FC<CreateBlogPostProps> = ({ userId }) => {
   };
 
   return (
-    <Container>
-      <h2>Create a Blog Post</h2>
+    <div className="createBlogMainContainer">
+      <h2 className="createBlogHeader">Create a Blog Post</h2>
       <Form onSubmit={handleSubmit}>
-        <Form.Group controlId="formTitle">
+        <Form.Group className="formTitle" controlId="formTitle">
           <Form.Label>Title</Form.Label>
           <Form.Control
             type="text"
@@ -35,9 +35,10 @@ const CreateBlogPost: React.FC<CreateBlogPostProps> = ({ userId }) => {
           />
         </Form.Group>
 
-        <Form.Group controlId="formContent">
-          <Form.Label>Content</Form.Label>
+        <Form.Group className="formCreateBlog" controlId="formContent">
+          <Form.Label className="formTitle">Content</Form.Label>
           <Form.Control
+            className="formContent"
             as="textarea"
             rows={5}
             placeholder="Write your post content here..."
@@ -51,7 +52,7 @@ const CreateBlogPost: React.FC<CreateBlogPostProps> = ({ userId }) => {
           Submit
         </Button>
       </Form>
-    </Container>
+    </div>
   );
 };
 

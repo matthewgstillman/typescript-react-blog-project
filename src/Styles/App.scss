@@ -169,3 +169,71 @@
         margin-top: 30px;
     }
 }
+
+//Create Blog Page Styles
+.createBlogMainContainer {
+    background-color: #002b5c;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 25px;
+
+    .createBlogHeader {
+        color: #F9A01B;
+        font-size: 52px;
+        text-align: left;
+        margin-bottom: 20px;
+
+        @media (max-width: 768px) {
+            font-size: 42px;
+        }
+
+        @media (max-width: 480px) {
+            font-size: 31px;
+        }
+    }
+
+    .formCreateBlog {
+        margin-bottom: 20px;
+
+        .formTitle {
+            margin-bottom: 10px;
+            max-width: 60%;
+
+            @media (max-width: 1200px) {
+                max-width: 70%;
+            }
+
+            @media (max-width: 768px) {
+                max-width: 100%;
+            }
+        }
+
+        .formContent {
+            margin-bottom: 20px;
+            max-width: 100%;
+
+            @media (max-width: 1200px) {
+                max-width: 100%;
+            }
+
+            @media (max-width: 768px) {
+                max-width: 100%;
+            }
+        }
+
+        .submitButton {
+            max-width: 30%;
+            align-self: flex-start;
+
+            @media (max-width: 1200px) {
+                max-width: 40%;
+            }
+
+            @media (max-width: 768px) {
+                max-width: 100%;
+            }
+        }
+    }
+}
