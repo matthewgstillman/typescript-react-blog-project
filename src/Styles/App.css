@@ -195,44 +195,35 @@
   }
 }
 .createBlogMainContainer .formCreateBlog {
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 .createBlogMainContainer .formCreateBlog .formTitle {
   margin-bottom: 10px;
-  max-width: 60%;
+  max-width: 40%;
 }
 @media (max-width: 1200px) {
   .createBlogMainContainer .formCreateBlog .formTitle {
-    max-width: 70%;
+    max-width: 50%;
   }
 }
 @media (max-width: 768px) {
   .createBlogMainContainer .formCreateBlog .formTitle {
     max-width: 100%;
   }
+}
+.createBlogMainContainer .formCreateBlog input {
+  margin-bottom: 20px;
 }
 .createBlogMainContainer .formCreateBlog .formContent {
   margin-bottom: 20px;
   max-width: 100%;
 }
-@media (max-width: 1200px) {
-  .createBlogMainContainer .formCreateBlog .formContent {
-    max-width: 100%;
-  }
-}
-@media (max-width: 768px) {
-  .createBlogMainContainer .formCreateBlog .formContent {
-    max-width: 100%;
-  }
+.createBlogMainContainer .formCreateBlog .formContent input {
+  margin-bottom: 20px;
 }
 .createBlogMainContainer .formCreateBlog .submitButton {
-  max-width: 30%;
+  max-width: 40%;
   align-self: flex-start;
-}
-@media (max-width: 1200px) {
-  .createBlogMainContainer .formCreateBlog .submitButton {
-    max-width: 40%;
-  }
 }
 @media (max-width: 768px) {
   .createBlogMainContainer .formCreateBlog .submitButton {

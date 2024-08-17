@@ -195,41 +195,37 @@
     }
 
     .formCreateBlog {
-        margin-bottom: 20px;
+        margin-bottom: 50px;
 
         .formTitle {
             margin-bottom: 10px;
-            max-width: 60%;
+            max-width: 40%;
 
             @media (max-width: 1200px) {
-                max-width: 70%;
+                max-width: 50%;
             }
 
             @media (max-width: 768px) {
                 max-width: 100%;
             }
+        }
+
+        input {
+            margin-bottom: 20px;
         }
 
         .formContent {
             margin-bottom: 20px;
             max-width: 100%;
 
-            @media (max-width: 1200px) {
-                max-width: 100%;
-            }
-
-            @media (max-width: 768px) {
-                max-width: 100%;
+            input {
+                margin-bottom: 20px;
             }
         }
 
         .submitButton {
-            max-width: 30%;
+            max-width: 40%;
             align-self: flex-start;
-
-            @media (max-width: 1200px) {
-                max-width: 40%;
-            }
 
             @media (max-width: 768px) {
                 max-width: 100%;
