@@ -9,10 +9,17 @@ export const createPost = asyncHandler(async (req: AuthenticatedRequest, res: Re
     return;
   }
 
+  const { title, content } = req.body;
+
+  if (!title || !content) {
+    res.status(400).json({ message: 'Title and content are required' });
+    return;
+  }
+
   const post = await Post.create({
-    title: req.body.title,
-    content: req.body.content,
-    author: req.user._id
+    title,
+    content,
+    author: req.user._id,
   });
 
   res.status(201).json(post);
@@ -62,12 +69,19 @@ export const addComment = asyncHandler(async (req: AuthenticatedRequest, res: Re
     return;
   }
 
+  const { text } = req.body;
+
+  if (!text) {
+    res.status(400).json({ message: 'Comment text is required' });
+    return;
+  }
+
   const post = await Post.findById(req.params.id);
   
   if (post) {
     const comment = {
-      text: req.body.text,
-      author: req.user._id
+      text,
+      author: req.user._id,
     };
 
     post.comments.push(comment);
