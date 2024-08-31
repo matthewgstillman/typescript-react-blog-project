@@ -5,15 +5,21 @@ import { useNavigate } from 'react-router-dom';
 import '../Styles/App.scss';
 import { useUser } from '../Contexts/UserContext';
 
+interface Comment {
+  author: string;
+  text: string;
+}
+
 interface Post {
   _id: string;
   title: string;
   content: string;
-  comments?: { author: string; text: string }[];
+  comments?: Comment[];
 }
 
 const Blogs: React.FC = () => {
   const [posts, setPosts] = useState<Post[] | null>(null);
+  const [commentText, setCommentText] = useState<string>('');
   const { user, setUser } = useUser();
   const navigate = useNavigate();
 
@@ -33,6 +39,29 @@ const Blogs: React.FC = () => {
   const handleLogout = () => {
     setUser(null);
     navigate('/');
+  };
+
+  const handleCommentSubmit = async (postId: string) => {
+    if (!commentText) return;
+
+    try {
+      const response = await axios.post(`http://localhost:3001/posts/${postId}/comments`, {
+        author: user?.firstName || 'Anonymous',
+        text: commentText,
+      });
+
+      setPosts((prevPosts) => {
+        if (!prevPosts) return null;
+
+        return prevPosts.map((post) =>
+          post._id === postId ? { ...post, comments: response.data.comments } : post
+        );
+      });
+
+      setCommentText(''); // Clear the comment input
+    } catch (error) {
+      console.error('Error adding comment: ', error);
+    }
   };
 
   return (
@@ -69,6 +98,25 @@ const Blogs: React.FC = () => {
                       </ListGroup.Item>
                     ))}
                   </ListGroup>
+                  <Form
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      handleCommentSubmit(post._id);
+                    }}
+                  >
+                    <Form.Group>
+                      <Form.Label>Add a comment</Form.Label>
+                      <FormControl
+                        as="textarea"
+                        rows={3}
+                        value={commentText}
+                        onChange={(e) => setCommentText(e.target.value)}
+                      />
+                    </Form.Group>
+                    <Button variant="primary" type="submit">
+                      Submit
+                    </Button>
+                  </Form>
                 </Card.Footer>
               </Card>
             </Col>
@@ -81,21 +129,6 @@ const Blogs: React.FC = () => {
             </div>
           </Col>
         )}
-        <Col className="blogCommentBox" md={4}>
-          <Card>
-            <Card.Body>
-              <Form>
-                <Form.Group>
-                  <Form.Label>Add a comment</Form.Label>
-                  <FormControl as="textarea" rows={3} />
-                </Form.Group>
-                <Button variant="primary" type="submit">
-                  Submit
-                </Button>
-              </Form>
-            </Card.Body>
-          </Card>
-        </Col>
       </Row>
     </div>
   );
